@@ -112,9 +112,9 @@ int createnewuser(std::string baseName, int userId, bool isUserAdmin) {
 
     if (nStatus == NERR_Success) {
         if (isUserAdmin) {
-            groupName = L"Администраторы";
-        } else {
             groupName = L"Administrators";
+        } else {
+            groupName = L"Users";
         }
 
         LOCALGROUP_MEMBERS_INFO_3 lmi;

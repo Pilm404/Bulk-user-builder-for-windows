@@ -16,7 +16,7 @@ std::wstring programName = L"Bulk User Builder ";
 std::string baseName = "user";
 int _index = 0;
 int minIndex = 0;
-int maxUsersNum = 10000;
+int maxUsersNum = 100000;
 bool isNewUserAdmin = false;
 bool start = false;
 
@@ -114,7 +114,7 @@ int createnewuser(std::string baseName, int userId, bool isUserAdmin) {
         if (isUserAdmin) {
             groupName = L"Администраторы";
         } else {
-            groupName = L"Пользователи";
+            groupName = L"Administrators";
         }
 
         LOCALGROUP_MEMBERS_INFO_3 lmi;
@@ -179,7 +179,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 
             hStaticText = CreateWindowW(
                 L"STATIC",
-                L"Welcome to the Bulk User Creation Tool for Windows.\nEnter the number of users (maximum 1000) then check or uncheck and whether to make these users administrators or not and then click start. Standard password is 'User'",
+                L"Welcome to the Bulk User Creation Tool for Windows.\nEnter the number of users (maximum 100000) then check or uncheck and whether to make these users administrators or not and then click start. Standard password is 'User' This program is only for the English version of Windows.",
                 WS_VISIBLE | WS_CHILD,
                 0, 0, 400, 600,
                 hwnd, NULL, NULL, NULL
@@ -241,7 +241,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
                         MessageBoxW(hwnd, L"Please enter a valid value.", programName.c_str(), MB_OK | MB_ICONERROR);
                         break;
                     } else if (_index > maxUsersNum) {
-                        MessageBoxW(hwnd, L"Too large number please enter a number up to 1.000", programName.c_str(), MB_OK | MB_ICONERROR);
+                        MessageBoxW(hwnd, L"Too large number please enter a number up to 100.000", programName.c_str(), MB_OK | MB_ICONERROR);
                         break;
                     }
 
